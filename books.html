@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="kk"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Literata:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Каталог — Кітапхана</title></head><body>
+<a class="skip" href="#main">Мазмұнға өту</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Кітапхана</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Мәзір</button>
+    <nav class="nav" id="nav" aria-label="Негізгі навигация">
+      <ul>
+        <li><a href="index.html" >Басты бет</a></li>
+        <li><a href="books.html" aria-current="page">Каталог</a></li>
+        <li><a href="login.html" >Кіру</a></li>
+        <li><a class="btn-nav" href="register.html">Тіркелу</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="container">
+    <div class="page-title">
+      <h1>Кітаптар каталогы</h1>
+    </div>
+    <form class="filters" id="filters" role="search" aria-label="Кітапты іздеу" onsubmit="return false">
+      <div><label for="q">Атауы немесе авторы</label><input type="search" id="q" placeholder="Мысалы: Әуезов"></div>
+      <div><label for="cat">Санат</label>
+        <select id="cat"><option value="">Барлығы</option><option value="lit">Әдебиет</option><option value="hist">Тарих</option><option value="sci">Ғылым</option><option value="tech">Технология</option></select></div>
+      <div><label for="avail">Қолжетімділік</label>
+        <select id="avail"><option value="">Барлығы</option><option value="ok">Қолжетімді</option><option value="out">Берілген</option></select></div>
+    </form>
+    <p class="result-count" id="count" aria-live="polite"></p>
+    <div class="grid" id="grid">
+      <article class="book" data-title="Абай жолы" data-author="Мұхтар Әуезов" data-cat="lit" data-avail="ok">
+        <div class="cover c-lit"><b>Абай жолы</b><small>Мұхтар Әуезов</small></div>
+        <div class="book-body">
+          <span class="meta">Әдебиет</span>
+          <span class="badge ok">Қолжетімді</span>
+          <a class="btn btn-primary" href="#" >Брондау</a>
+        </div>
+      </article>
+      <article class="book" data-title="Қан мен тер" data-author="Әбдіжәміл Нұрпейісов" data-cat="lit" data-avail="out">
+        <div class="cover c-lit"><b>Қан мен тер</b><small>Әбдіжәміл Нұрпейісов</small></div>
+        <div class="book-body">
+          <span class="meta">Әдебиет</span>
+          <span class="badge out">Берілген</span>
+          <a class="btn btn-primary" href="#" aria-disabled="true">Кезекке тұру</a>
+        </div>
+      </article>
+      <article class="book" data-title="Көшпенділер" data-author="Ілияс Есенберлин" data-cat="hist" data-avail="ok">
+        <div class="cover c-hist"><b>Көшпенділер</b><small>Ілияс Есенберлин</small></div>
+        <div class="book-body">
+          <span class="meta">Тарих</span>
+          <span class="badge ok">Қолжетімді</span>
+          <a class="btn btn-primary" href="#" >Брондау</a>
+        </div>
+      </article>
+      <article class="book" data-title="Қазақстан тарихы" data-author="Ұжымдық еңбек" data-cat="hist" data-avail="ok">
+        <div class="cover c-hist"><b>Қазақстан тарихы</b><small>Ұжымдық еңбек</small></div>
+        <div class="book-body">
+          <span class="meta">Тарих</span>
+          <span class="badge ok">Қолжетімді</span>
+          <a class="btn btn-primary" href="#" >Брондау</a>
+        </div>
+      </article>
+      <article class="book" data-title="Физика негіздері" data-author="Ұжымдық еңбек" data-cat="sci" data-avail="out">
+        <div class="cover c-sci"><b>Физика негіздері</b><small>Ұжымдық еңбек</small></div>
+        <div class="book-body">
+          <span class="meta">Ғылым</span>
+          <span class="badge out">Берілген</span>
+          <a class="btn btn-primary" href="#" aria-disabled="true">Кезекке тұру</a>
+        </div>
+      </article>
+      <article class="book" data-title="Жоғары математика" data-author="Ұжымдық еңбек" data-cat="sci" data-avail="ok">
+        <div class="cover c-sci"><b>Жоғары математика</b><small>Ұжымдық еңбек</small></div>
+        <div class="book-body">
+          <span class="meta">Ғылым</span>
+          <span class="badge ok">Қолжетімді</span>
+          <a class="btn btn-primary" href="#" >Брондау</a>
+        </div>
+      </article>
+      <article class="book" data-title="PHP және MySQL" data-author="Оқу құралы" data-cat="tech" data-avail="ok">
+        <div class="cover c-tech"><b>PHP және MySQL</b><small>Оқу құралы</small></div>
+        <div class="book-body">
+          <span class="meta">Технология</span>
+          <span class="badge ok">Қолжетімді</span>
+          <a class="btn btn-primary" href="#" >Брондау</a>
+        </div>
+      </article>
+      <article class="book" data-title="Алгоритмдер негіздері" data-author="Оқу құралы" data-cat="tech" data-avail="out">
+        <div class="cover c-tech"><b>Алгоритмдер негіздері</b><small>Оқу құралы</small></div>
+        <div class="book-body">
+          <span class="meta">Технология</span>
+          <span class="badge out">Берілген</span>
+          <a class="btn btn-primary" href="#" aria-disabled="true">Кезекке тұру</a>
+        </div>
+      </article>
+    </div>
+    <p class="empty" id="empty">Ештеңе табылмады. Іздеу сөзін өзгертіп көріңіз немесе сүзгілерді тазалаңыз.</p>
+  </div>
+</main>
+<footer class="site-footer"><div class="container"><span>© 2026 Кітапхана — оқу жобасы</span><span>PHP және MySQL курсы</span></div></footer>
+<script src="js/main.js"></script>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="kk"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Literata:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Кіру — Кітапхана</title></head><body>
+<a class="skip" href="#main">Мазмұнға өту</a>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Кітапхана</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Мәзір</button>
+    <nav class="nav" id="nav" aria-label="Негізгі навигация">
+      <ul>
+        <li><a href="index.html" >Басты бет</a></li>
+        <li><a href="books.html" >Каталог</a></li>
+        <li><a href="login.html" aria-current="page">Кіру</a></li>
+        <li><a class="btn-nav" href="register.html">Тіркелу</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="auth">
+  <div class="card">
+    <h1>Кіру</h1>
+    <p>Бронь жасау үшін есептік жазбаңызға кіріңіз.</p>
+    <div class="form-note" id="note" role="status"></div>
+    <form id="login-form" action="login.php" method="post" novalidate>
+      <div class="field"><label for="email">Электрондық пошта</label>
+        <input type="email" id="email" name="email" autocomplete="email" required><span class="error" id="email-err"></span></div>
+      <div class="field"><label for="password">Құпиясөз</label>
+        <div class="pw"><input type="password" id="password" name="password" autocomplete="current-password" required><button type="button" data-toggle="password">Көрсету</button></div>
+        <span class="error" id="password-err"></span></div>
+      <button class="btn btn-primary btn-block" type="submit">Кіру</button>
+    </form>
+    <p class="switch">Есептік жазба жоқ па? <a href="register.html">Тіркелу</a></p>
+  </div>
+</main>
+<footer class="site-footer"><div class="container"><span>© 2026 Кітапхана — оқу жобасы</span><span>PHP және MySQL курсы</span></div></footer>
+<script src="js/main.js"></script>
+</body></html>

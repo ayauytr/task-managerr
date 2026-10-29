@@ -1,2 +1,15 @@
-<img width="1600" height="792" alt="5e5fbda0-3ec7-4b60-a8e9-5badaa7badd5" src="https://github.com/user-attachments/assets/ab053b77-9c9b-4692-92cd-c330df618c7f" />
-# task-managerr
+# Кітапхана — онлайн кітапхана жүйесі
+
+PHP және MySQL курсының жеке жобасы.
+
+## 9-апта: Frontend (дайын)
+- `index.html` — басты бет
+- `books.html` — кітаптар каталогы (іздеу/сүзу интерфейсі)
+- `login.html` — кіру формасы
+- `register.html` — тіркелу формасы
+- `css/style.css` — бір стиль файлы, адаптивті (мобильді / планшет / компьютер)
+- `js/main.js` — мобильді мәзір, форма валидациясы, каталог сүзгісі
+
+## Келесі қадамдар
+- 10-апта: беттерді `.php`-ға көшіру, header/footer-ді `include` арқылы бөлу
+- 11-апта: MySQL, PDO, тіркелу/кіру/шығу
