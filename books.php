@@ -3,7 +3,6 @@ $pageTitle = 'Каталог — Кітапхана';
 $current = 'books';
 require_once 'includes/functions.php';
 require_once 'includes/data.php';
-require_once 'includes/db.php';
 
 // GET арқылы келген іздеу параметрлері
 $q     = get('q');
@@ -18,37 +17,25 @@ if (!in_array($avail, ['', 'ok', 'out'], true)) {
     $avail = '';
 }
 
-// Дайындалған сұраныс (Prepared Statement) арқылы сүзу және оқу (READ)
-$sql = 'SELECT id, title, author, cat, avail, year, pages, cover, description FROM books WHERE 1=1';
-$params = [];
-
-if ($q !== '') {
-    $sql .= ' AND (title LIKE :q1 OR author LIKE :q2)';
-    $like = '%' . $q . '%';
-    $params[':q1'] = $like;
-    $params[':q2'] = $like;
-}
-if ($cat !== '') {
-    $sql .= ' AND cat = :cat';
-    $params[':cat'] = $cat;
-}
-if ($avail !== '') {
-    $sql .= ' AND avail = :avail';
-    $params[':avail'] = $avail;
-}
-
-$sql .= ' ORDER BY id DESC';
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute($params);
-$result = $stmt->fetchAll();
+// Сервер жағында сүзу
+$result = array_filter($books, function ($b) use ($q, $cat, $avail) {
+    if ($q !== '' && mb_stripos($b['title'] . ' ' . $b['author'], $q) === false) {
+        return false;
+    }
+    if ($cat !== '' && $b['cat'] !== $cat) {
+        return false;
+    }
+    if ($avail !== '' && $b['avail'] !== $avail) {
+        return false;
+    }
+    return true;
+});
 
 include 'includes/header.php';
 ?>
   <div class="container">
-    <div class="page-title page-title-row">
+    <div class="page-title">
       <h1>Кітаптар каталогы</h1>
-      <a class="btn btn-primary" href="book_create.php">+ Жаңа кітап қосу</a>
     </div>
     <form class="filters" method="get" action="books.php" role="search" aria-label="Кітапты іздеу">
       <div><label for="q">Атауы немесе авторы</label>
@@ -75,10 +62,10 @@ include 'includes/header.php';
     <div class="grid">
       <?php foreach ($result as $b): $ok = $b['avail'] === 'ok'; ?>
       <article class="book">
-        <a href="book.php?id=<?= (int)$b['id'] ?>"><img class="cover-img" src="img/covers/<?= e($b['cover']) ?>" alt="<?= e($b['title']) ?> — мұқаба" width="300" height="400" loading="lazy"></a>
+        <a href="book.php?id=<?= (int)$b['id'] ?>"><img class="cover-img" src="img/covers/<?= (int)$b['id'] ?>.svg" alt="<?= e($b['title']) ?> — мұқаба" width="300" height="400" loading="lazy"></a>
         <div class="book-body">
           <h3><a href="book.php?id=<?= (int)$b['id'] ?>"><?= e($b['title']) ?></a></h3>
-          <span class="meta"><?= e($b['author']) ?> · <?= e($categories[$b['cat']] ?? $b['cat']) ?></span>
+          <span class="meta"><?= e($b['author']) ?> · <?= e($categories[$b['cat']]) ?></span>
           <span class="badge <?= e($b['avail']) ?>"><?= $ok ? 'Қолжетімді' : 'Берілген' ?></span>
           <a class="btn btn-primary" href="book.php?id=<?= (int)$b['id'] ?>"><?= $ok ? 'Брондау' : 'Кезекке тұру' ?></a>
         </div>
